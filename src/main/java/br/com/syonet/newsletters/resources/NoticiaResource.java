@@ -4,7 +4,11 @@ import br.com.syonet.newsletters.dtos.NoticiaDTO;
 import br.com.syonet.newsletters.services.NoticiaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/noticia")
 public class NoticiaResource {
 
     private final NoticiaService service;

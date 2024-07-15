@@ -5,6 +5,8 @@ import br.com.syonet.newsletters.entities.Cliente;
 import br.com.syonet.newsletters.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -20,7 +22,7 @@ public class ClienteService {
         Cliente cliente = new Cliente();
         cliente.setNome(clienteDTO.getNome());
         cliente.setEmail(clienteDTO.getEmail());
-        cliente.setDataNascimento(clienteDTO.getDataNascimento());
+        cliente.setDataNascimento(LocalDate.parse(clienteDTO.getDataNascimento().format(DateTimeFormatter.ISO_DATE)));
         return new ClienteDTO(repository.save(cliente));
     }
 

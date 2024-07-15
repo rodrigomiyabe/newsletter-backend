@@ -1,13 +1,11 @@
 package br.com.syonet.newsletters.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -21,11 +19,14 @@ import java.time.LocalDate;
 public class Cliente implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_cliente")
+    @SequenceGenerator(name = "s_cliente", sequenceName = "s_cliente", allocationSize = 1)
     private Long id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
     @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "data_nascimento")
+    @Column(name = "datanascimento")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 }
