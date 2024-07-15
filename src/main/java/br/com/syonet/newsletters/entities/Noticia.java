@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.io.Serializable;
 
@@ -26,6 +27,14 @@ public class Noticia implements Serializable {
     private String descricao;
     @Column(name = "link", nullable = false)
     private String link;
-    @Column(name = "processada", nullable = false, columnDefinition = "default = 'N'")
+    @Column(name = "processada", nullable = false)
+    @ColumnDefault("'N'")
     private String processada;
+
+    @PrePersist
+    public void prePersist() {
+        if (processada == null) {
+            processada = "N";
+        }
+    }
 }

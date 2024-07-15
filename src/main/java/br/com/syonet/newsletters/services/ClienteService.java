@@ -22,7 +22,11 @@ public class ClienteService {
         Cliente cliente = new Cliente();
         cliente.setNome(clienteDTO.getNome());
         cliente.setEmail(clienteDTO.getEmail());
-        cliente.setDataNascimento(LocalDate.parse(clienteDTO.getDataNascimento().format(DateTimeFormatter.ISO_DATE)));
+        if(clienteDTO.getDataNascimento() != null) {
+            cliente.setDataNascimento(LocalDate.parse(clienteDTO.getDataNascimento().format(DateTimeFormatter.ISO_DATE)));
+        } else {
+            cliente.setDataNascimento(null);
+        }
         return new ClienteDTO(repository.save(cliente));
     }
 

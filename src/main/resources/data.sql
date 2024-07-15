@@ -6,11 +6,11 @@ create table Cliente (
 );
 
 create table Noticia(
-    id LONG primary key not null,
+    id IDENTITY primary key not null,
     titulo varchar2(100) not null,
     descricao varchar2(500) not null,
     link varchar2(100) not null,
-    processada varchar2(1) not null default 'N'
+    processada varchar2(2) default 'N' not null
 );
 
 CREATE SEQUENCE s_cliente
