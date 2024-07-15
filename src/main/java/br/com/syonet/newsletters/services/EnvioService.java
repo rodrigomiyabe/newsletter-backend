@@ -19,7 +19,7 @@ public class EnvioService {
     }
 
 
-    @Scheduled(cron = "0 0 8 * * ?")
+    @Scheduled(cron = "0 8 * * *")
     public void sendDailyNewsletters() {
         List<ClienteDTO> clientes = clienteService.listaClientes();
         List<NoticiaDTO> noticias = noticiaService.listarNoticiasNaoProcessadas();
